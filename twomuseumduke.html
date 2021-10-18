@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<style media="screen">
+  body {
+  background-image: url("https://www.zebradog.com/themes/custom/zebradog/img/case-study/duke/museum/rotator/1.jpg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  #img10 {
+  position: relative;
+  top: 600px;
+  left: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #textduke {
+  position: relative;
+  top: 0px;
+  left: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #dayOfWeek {
+  position: relative;
+  top: 0px;
+  left: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #Code {
+  position: relative;
+  top: 0px;
+  left: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #Age {
+  position: relative;
+  top: 0px;
+  left: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #key {
+  position: relative;
+  top: 50px;
+  left: 650px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+  #hint {
+  position: fixed;
+  top: 700px;
+  left: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  }
+</style>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      function isItWeekend (dayOfWeek) {
+        if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function isItMonday (dayOfWeek) {
+      if (dayOfWeek == "Monday") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+      function whatIsYourAge (Age) {
+        if (Age == "Child (5  and younger)"|| Age== "65 years or older"){
+        return true
+      }
+        else {
+          return false
+        }
+      }
+      function couponCode(Code) {
+        if (Code == "5"){
+        return true;
+      }else{
+        return false
+      }
+    }
+
+      function mainFunction(){
+        var text = ""
+        var weekendVar = isItWeekend(document.getElementById("dayOfWeek").value);
+        var meloCode = couponCode(document.getElementById("Code").value);
+        var ageVar = whatIsYourAge(document.getElementById("Age").value);
+        var mondayVar = isItMonday(document.getElementById("dayOfWeek").value);
+if (weekendVar) {
+  document.getElementById("key").innerHTML = "$15"
+}
+else if (ageVar && meloCode)
+    document.getElementById("key").innerHTML = "$1"
+    else if (meloCode && weekendVar && ageVar)
+        document.getElementById("key").innerHTML = "$1"
+        else if (weekendVar && meloCode)
+            document.getElementById("key").innerHTML = "$1"
+            else if (meloCode)
+                document.getElementById("key").innerHTML = "$1"
+
+        else if (ageVar){
+        document.getElementById("key").innerHTML = "$5"
+      }else if (mondayVar)
+        document.getElementById("key").innerHTML = "$5"
+
+          else{
+            document.getElementById("key").innerHTML ="$10"
+          }
+  }
+
+    </script>
+  </head>
+  <body>
+    <img  id ="img10" src="https://cdn.pixabay.com/photo/2014/04/03/10/52/ticket-311560_1280.png" >
+  <h1 id = textduke >Museum Ticket Generator <h1>
+  <label id = textduke for = "dayOfWeek" >What Day is It?</label>
+  <select name = "dayOfWeek" id = "dayOfWeek">
+    <option value = "Monday">Monday</option>
+    <option value = "Tuesday">Tuesday</option>
+    <option value = "Wednesday">Wednesday</option>
+    <option value = "Thursday">Thursday</option>
+    <option value = "Friday">Friday</option>
+    <option value = "Saturday">Saturday</option>
+    <option value = "Sunday">Sunday</option>
+  </select>
+  <br><label id = textduke for = "Age">Age</label>
+  <select name = "Age" id = "Age">
+  <option value = "Child (5  and younger)">Child (5  and younger)</option>
+  <option value = "6-64 years old">6-64 years old</option>
+  <option value = "65 years or older">65 years or older</option>
+  </select>
+  <form action = "/action_pahe.php">
+  <label for = "fname" id = textduke>Coupon Code</label>
+  <input type="text" id="Code" name = "Code"><br><br>
+  </form>
+  <button id = textduke type="button" name="button" onclick = "mainFunction()">Confirm</button>
+<p id = hint>Hint: The coupon code is the amount of Duke basketball championships<p>
+  <p id="key"></p>
+
+  </body>
+</html>
